@@ -1,0 +1,525 @@
+<resources>
+    <string name="app_name">Unit Converter</string>
+
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+
+    <string name="action_settings">Preferences</string>
+
+
+    <!--Setting Strings-->
+    <string name="decimal_setting">Decimal Scale</string>
+    <string name="Theme_setting">Dark Theme</string>
+    <!--<string name="Theme_Dark">Dark</string>
+    <string name="Theme_Light">Light</string>-->
+    <string name="save_button_setting">Save</string>
+    <string name="cancel_button_setting">Cancel</string>
+    <string name="decimal_value">decimalValue</string>
+
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="enter_value">Enter Value</string>
+    <string name="default_value">1</string>
+
+
+    <!-- Nav Strings-->
+    <string name="nav_currency">Currency</string>
+    <string name="nav_digital">Digital</string>
+    <string name="nav_length">Length</string>
+    <string name="nav_temperature">Temperature</string>
+    <string name="nav_area">Area</string>
+    <string name="nav_volume">Volume</string>
+    <string name="nav_weight">Weight</string>
+    <string name="nav_time">Time</string>
+    <string name="nav_share">Share</string>
+    <string name="nav_send">Send Feedback</string>
+
+    <string-array name="common_converter_array">
+        <item>Length</item>
+        <item>Temperature</item>
+        <item>Area</item>
+        <item>Volume</item>
+        <item>Weight</item>
+        <item>Time</item>
+        <item>Speed</item>
+        <item>Pressure</item>
+    </string-array>
+
+    <string-array name="fin_converter_array">
+        <item>Currency</item>
+    </string-array>
+
+    <!--Currency Converter Spinner Values-->
+    <string-array name="currency_Array">
+        <item>BGN - Bulgarian Lev</item>
+        <item>BRL - Brazilian Real</item>
+        <item>CAD - Canadian Dollar</item>
+        <item>CHF - Swiss Franc</item>
+        <item>CNY - Chinese Yuan</item>
+        <item>CZK - Czech Republic Koruna</item>
+        <item>DKK - Danish Krone equals</item>
+        <item>GBP - British Pound</item>
+        <item>HKD - Hong Kong Dollar</item>
+        <item>HRK - Croatian Kuna</item>
+        <item>HUF - Hungarian Forint</item>
+        <item>IDR - Indonesian Rupiah</item>
+        <item>ILS - Israeli New Shekel</item>
+        <item>INR - Indian Rupee</item>
+        <item>JPY - Japanese Yen</item>
+        <item>KRW - South Korean Won</item>
+        <item>MXN - Mexican Peso</item>
+        <item>MYR - Malaysian Ringgit</item>
+        <item>NOK - Norwegian Krone</item>
+        <item>NZD - New Zealand Dollar</item>
+        <item>PHP - Philippine Peso</item>
+        <item>PLN - Polish Zloty</item>
+        <item>RON - Romanian Leu</item>
+        <item>RUB - Russian Ruble</item>
+        <item>SEK - Swedish Krona</item>
+        <item>SGD - Singapore Dollar</item>
+        <item>THB - Thai Baht</item>
+        <item>TRY - Turkish Lira</item>
+        <item>USD - US Dollar</item>
+        <item>ZAR - South African Rand</item>
+        <item>AUD - Australian Dollar</item>
+    </string-array>
+
+    <!--Digital Converter Spinner Values-->
+    <string-array name="digi_Storage_Array">
+        <item>Kibibyte (KB)</item>
+        <item>Mebibyte (MB)</item>
+        <item>Gibibyte (GB)</item>
+        <item>Tebibyte (TB)</item>
+        <item>Pebibyte (PB)</item>
+    </string-array>
+
+    <!--Length Converter Spinner Values-->
+    <string-array name="length_array">
+        <item>meter [m]</item>
+        <item>kilometer [km]</item>
+        <item>decimeter [dm]</item>
+        <item>centimeter [cm]</item>
+        <item>millimeter [mm]</item>
+        <item>micrometer [μm]</item>
+        <item>nanometer [nm]</item>
+        <item>mile [mi, mi(Int)]</item>
+        <item>yard [yd]</item>
+        <item>foot [ft]</item>
+        <item>inch [in]</item>
+        <item>light year [ly]</item>
+        <item>exameter [Em]</item>
+        <item>petameter [Pm]</item>
+        <item>terameter [Tm]</item>
+        <item>gigameter [Gm]</item>
+        <item>megameter [Mm]</item>
+        <item>hectometer [hm]</item>
+        <item>dekameter [dam]</item>
+        <item>micron [&#181;]</item>
+        <item>picometer [pm]</item>
+        <item>femtometer [fm]</item>
+        <item>attometer [am]</item>
+        <item>megaparsec [Mpc]</item>
+        <item>kiloparsec [kpc]</item>
+        <item>parsec [pc]</item>
+        <item>astronomical unit [AU, UA]</item>
+        <item>league [lea]</item>
+        <item>nautical league (UK)</item>
+        <item>nautical league (int.)</item>
+        <item>league (statute) [st.league]</item>
+        <item>nautical mile (UK) [NM (UK)]</item>
+        <item>nautical mile (international)</item>
+        <item>mile (statute) [mi, mi (US)]</item>
+        <item>mile (US survey) [mi]</item>
+        <item>mile (Roman)</item>
+        <item>kiloyard [kyd]</item>
+        <item>furlong [fur]</item>
+        <item>furlong (US survey) [fur]</item>
+        <item>chain [ch]</item>
+        <item>chain (US survey) [ch]</item>
+        <item>rope</item>
+        <item>rod [rd]</item>
+        <item>rod (US survey) [rd]</item>
+        <item>perch</item>
+        <item>pole</item>
+        <item>fathom [fath]</item>
+        <item>fathom (US survey) [fath]</item>
+        <item>ell</item>
+        <item>foot (US survey) [ft]</item>
+        <item>link [li]</item>
+        <item>link (US survey) [li]</item>
+        <item>cubit (UK)</item>
+        <item>hand</item>
+        <item>span (cloth)</item>
+        <item>finger (cloth)</item>
+        <item>nail (cloth)</item>
+        <item>inch (US survey) [in]</item>
+        <item>barleycorn</item>
+        <item>mil [mil, thou]</item>
+        <item>microinch</item>
+        <item>angstrom [A]</item>
+        <item>a.u. of length [a.u., b]</item>
+        <item>X-unit [X]</item>
+        <item>fermi [F, f]</item>
+        <item>arpent</item>
+        <item>pica</item>
+        <item>point</item>
+        <item>twip</item>
+        <item>aln</item>
+        <item>famn</item>
+        <item>caliber [cl]</item>
+        <item>centiinch [cin]</item>
+        <item>ken</item>
+        <item>Russian archin</item>
+        <item>Roman actus</item>
+        <item>vara de tarea</item>
+        <item>vara conuquera</item>
+        <item>vara castellana</item>
+        <item>cubit (Greek)</item>
+        <item>long reed</item>
+        <item>reed</item>
+        <item>long cubit</item>
+        <item>handbreadth</item>
+        <item>fingerbreadth</item>
+        <item>Planck length</item>
+        <item>Electron radius (classical)</item>
+        <item>Bohr radius [b, a.u.]</item>
+        <item>Earth\'s equatorial radius</item>
+        <item>Earth\'s polar radius</item>
+        <item>Earth\'s distance from sun</item>
+        <item>Sun\'s radius</item>
+    </string-array>
+
+    <!--Temperature Converter Spinner Values-->
+    <string-array name="temperature_array">
+        <item>Celsius</item>
+        <!--<item>Kelvin</item>-->
+        <item>Fahrenheit</item>
+    </string-array>
+
+    <!--Area Converter Spinner Values-->
+    <string-array name="area_array">
+        <item>square meter [m^2]</item>
+        <item>square kilometer [km^2]</item>
+        <item>square centimeter [cm^2]</item>
+        <item>square millimeter [mm^2]</item>
+        <item>square micrometer [μm^2]</item>
+        <item>hectare [ha]</item>
+        <item>acre [ac]</item>
+        <item>square mile [mi^2]</item>
+        <item>square yard [yd^2]</item>
+        <item>square foot [ft^2]</item>
+        <item>square inch [in^2]</item>
+        <item>square hectometer [hm^2]</item>
+        <item>square dekameter [dam^2]</item>
+        <item>square decimeter [dm^2]</item>
+        <item>square nanometer [nm^2]</item>
+        <item>are [a]</item>
+        <item>barn [b]</item>
+        <item>square mile (US survey)</item>
+        <item>square foot (US survey)</item>
+        <item>circular inch</item>
+        <item>township</item>
+        <item>section</item>
+        <item>acre (US survey) [ac]</item>
+        <item>rood</item>
+        <item>square chain [ch^2]</item>
+        <item>square rod</item>
+        <item>square rod (US survey)</item>
+        <item>square perch</item>
+        <item>square pole</item>
+        <item>square mil [mil^2]</item>
+        <item>circular mil</item>
+        <item>homestead</item>
+        <item>sabin</item>
+        <item>arpent</item>
+        <item>cuerda</item>
+        <item>plaza</item>
+        <item>varas castellanas cuad</item>
+        <item>varas conuqueras cuad</item>
+        <item>Electron cross section</item>
+    </string-array>
+
+    <!--Volume Converter Spinner Values-->
+    <string-array name="volume_array">
+        <item>cubic meter [m^3]</item>
+        <item>cubic kilometer [km^3]</item>
+        <item>cubic centimeter [cm^3]</item>
+        <item>cubic millimeter [mm^3]</item>
+        <item>liter [L, l]</item>
+        <item>milliliter [mL]</item>
+        <item>gallon (US) [gal (US)]</item>
+        <item>quart (US) [qt (US)]</item>
+        <item>pint (US) [pt (US)]</item>
+        <item>cup (US)</item>
+        <item>tablespoon (US)</item>
+        <item>teaspoon (US)</item>
+        <item>cubic mile [mi^3]</item>
+        <item>cubic yard [yd^3]</item>
+        <item>cubic foot [ft^3]</item>
+        <item>cubic inch [in^3]</item>
+        <item>cubic decimeter [dm^3]</item>
+        <item>exaliter [EL]</item>
+        <item>petaliter [PL]</item>
+        <item>teraliter [TL]</item>
+        <item>gigaliter [GL]</item>
+        <item>megaliter [ML]</item>
+        <item>kiloliter [kL]</item>
+        <item>hectoliter [hL]</item>
+        <item>dekaliter [daL]</item>
+        <item>deciliter [dL]</item>
+        <item>centiliter [cL]</item>
+        <item>microliter [μL]</item>
+        <item>nanoliter [nL]</item>
+        <item>picoliter [pL]</item>
+        <item>femtoliter [fL]</item>
+        <item>attoliter [aL]</item>
+        <item>cc [cc, cm^3]</item>
+        <item>drop</item>
+        <item>barrel (oil) [bbl (oil)]</item>
+        <item>barrel (US) [bbl (US)]</item>
+        <item>barrel (UK) [bbl (UK)]</item>
+        <item>gallon (UK) [gal (UK)]</item>
+        <item>quart (UK) [qt (UK)]</item>
+        <item>pint (UK) [pt (UK)]</item>
+        <item>cup (metric)</item>
+        <item>cup (UK)</item>
+        <item>fluid ounce (US) [fl oz (US)]</item>
+        <item>fluid ounce (UK) [fl oz (UK)]</item>
+        <item>tablespoon (metric)</item>
+        <item>tablespoon (UK)</item>
+        <item>dessertspoon (US)</item>
+        <item>dessertspoon (UK)</item>
+        <item>teaspoon (metric)</item>
+        <item>teaspoon (UK)</item>
+        <item>gill (US) [gi]</item>
+        <item>gill (UK) [gi (UK)]</item>
+        <item>minim (US)</item>
+        <item>minim (UK)</item>
+        <item>ton register [ton reg]</item>
+        <item>ccf</item>
+        <item>hundred-cubic foot</item>
+        <item>acre-foot [ac*ft]</item>
+        <item>acre-foot (US survey)</item>
+        <item>acre-inch [ac*in]</item>
+        <item>dekastere</item>
+        <item>stere [st]</item>
+        <item>decistere</item>
+        <item>cord [cd]</item>
+        <item>tun</item>
+        <item>hogshead</item>
+        <item>board foot</item>
+        <item>dram [dr]</item>
+        <item>cor (Biblical)</item>
+        <item>homer (Biblical)</item>
+        <item>bath (Biblical)</item>
+        <item>hin (Biblical)</item>
+        <item>cab (Biblical)</item>
+        <item>log (Biblical)</item>
+        <item>Taza (Spanish)</item>
+        <item>Earth\'s volume</item>
+    </string-array>
+
+    <!--Weight Converter Spinner Values-->
+    <string-array name="weight_array">
+        <item>kilogram [kg]</item>
+        <item>gram [g]</item>
+        <item>milligram [mg]</item>
+        <item>ton (metric) [t]</item>
+        <item>pound [lbs]</item>
+        <item>ounce [oz]</item>
+        <item>carat [car, ct]</item>
+        <item>ton (short) [ton (US)]</item>
+        <item>ton (long) [ton (UK)]</item>
+        <item>Atomic mass unit [u]</item>
+        <item>exagram [Eg]</item>
+        <item>petagram [Pg]</item>
+        <item>teragram [Tg]</item>
+        <item>gigagram [Gg]</item>
+        <item>megagram [Mg]</item>
+        <item>hectogram [hg]</item>
+        <item>dekagram [dag]</item>
+        <item>decigram [dg]</item>
+        <item>centigram [cg]</item>
+        <item>microgram [μg]</item>
+        <item>nanogram [ng]</item>
+        <item>picogram [pg]</item>
+        <item>femtogram [fg]</item>
+        <item>attogram [ag]</item>
+        <item>dalton</item>
+        <item>kilogram-force square second/meter</item>
+        <item>kilopound [kip]</item>
+        <item>kip</item>
+        <item>slug</item>
+        <item>pound-force square second/foot</item>
+        <item>pound (troy or apothecary)</item>
+        <item>poundal [pdl]</item>
+        <item>ton (assay) (US) [AT (US)]</item>
+        <item>ton (assay) (UK) [AT (UK)]</item>
+        <item>kiloton (metric) [kt]</item>
+        <item>quintal (metric) [cwt]</item>
+        <item>hundredweight (US)</item>
+        <item>hundredweight (UK)</item>
+        <item>quarter (US) [qr (US)]</item>
+        <item>quarter (UK) [qr (UK)]</item>
+        <item>stone (US)</item>
+        <item>stone (UK)</item>
+        <item>tonne [t]</item>
+        <item>pennyweight [pwt]</item>
+        <item>scruple (apothecary) [s.ap]</item>
+        <item>grain [gr]</item>
+        <item>gamma</item>
+        <item>talent (Biblical Hebrew)</item>
+        <item>mina (Biblical Hebrew)</item>
+        <item>shekel (Biblical Hebrew)</item>
+        <item>bekan (Biblical Hebrew)</item>
+        <item>gerah (Biblical Hebrew)</item>
+        <item>talent (Biblical Greek)</item>
+        <item>mina (Biblical Greek)</item>
+        <item>tetradrachma (Biblical Greek)</item>
+        <item>didrachma (Biblical Greek)</item>
+        <item>drachma (Biblical Greek)</item>
+        <item>denarius (Biblical Roman)</item>
+        <item>assarion (Biblical Roman)</item>
+        <item>quadrans (Biblical Roman)</item>
+        <item>lepton (Biblical Roman)</item>
+        <item>Planck mass</item>
+        <item>Electron mass (rest)</item>
+        <item>Muon mass</item>
+        <item>Proton mass</item>
+        <item>Neutron mass</item>
+        <item>Deuteron mass</item>
+        <item>Earth\'s mass</item>
+        <item>Sun\'s mass</item>
+    </string-array>
+
+    <!--Time Converter Spinner Values-->
+    <string-array name="time_array">
+        <item>second [s]</item>
+        <item>millisecond [ms]</item>
+        <item>minute [min]</item>
+        <item>hour [h]</item>
+        <item>day [d]</item>
+        <item>week</item>
+        <item>month</item>
+        <item>year [y]</item>
+        <item>decade</item>
+        <item>century</item>
+        <item>millennium</item>
+        <item>microsecond [&#181;s]</item>
+        <item>nanosecond [ns]</item>
+        <item>picosecond [ps]</item>
+        <item>femtosecond [fs]</item>
+        <item>attosecond [as]</item>
+        <item>shake</item>
+        <item>month (synodic)</item>
+        <item>year (Julian)</item>
+        <item>year (leap)</item>
+        <item>year (tropical)</item>
+        <item>year (sidereal)</item>
+        <item>day (sidereal)</item>
+        <item>hour (sidereal)</item>
+        <item>minute (sidereal)</item>
+        <item>second (sidereal)</item>
+        <item>fortnight</item>
+        <item>septennial</item>
+        <item>octennial</item>
+        <item>novennial</item>
+        <item>quindecennial</item>
+        <item>quinquennial</item>
+        <item>Planck time</item>
+    </string-array>
+
+    <!--Speed Converter Spinner Values-->
+    <string-array name="speed_array">
+        <item>meter/second [m/s]</item>
+        <item>kilometer/hour [km/h]</item>
+        <item>mile/hour [mi/h]</item>
+        <item>meter/hour [m/h]</item>
+        <item>meter/minute [m/min]</item>
+        <item>kilometer/minute [km/min]</item>
+        <item>kilometer/second [km/s]</item>
+        <item>centimeter/hour [cm/h]</item>
+        <item>centimeter/minute [cm/min]</item>
+        <item>centimeter/second [cm/s]</item>
+        <item>millimeter/hour [mm/h]</item>
+        <item>millimeter/minute [mm/min]</item>
+        <item>millimeter/second [mm/s]</item>
+        <item>foot/hour [ft/h]</item>
+        <item>foot/minute [ft/min]</item>
+        <item>foot/second [ft/s]</item>
+        <item>yard/hour [yd/h]</item>
+        <item>yard/minute [yd/min]</item>
+        <item>yard/second [yd/s]</item>
+        <item>mile/minute [mi/min]</item>
+        <item>mile/second [mi/s]</item>
+        <item>knot [kt, kn]</item>
+        <item>knot (UK) [kt (UK)]</item>
+        <item>Velocity of light in vacuum</item>
+        <item>Cosmic velocity - first</item>
+        <item>Cosmic velocity - second</item>
+        <item>Cosmic velocity - third</item>
+        <item>Earth\'s velocity</item>
+        <item>Velocity of sound in pure water</item>
+        <item>Velocity of sound in sea water (20°C, 10 meter deep)</item>
+        <item>Mach (20°C, 1 atm)</item>
+        <item>Mach (SI standard)</item>
+    </string-array>
+
+    <!--Speed Converter Spinner Values-->
+    <string-array name="pressure_array">
+        <item>pascal [Pa]</item>
+        <item>kilopascal [kPa]</item>
+        <item>bar</item>
+        <item>psi [psi]</item>
+        <item>ksi [ksi]</item>
+        <item>Standard atmosphere [atm]</item>
+        <item>exapascal [EPa]</item>
+        <item>petapascal [PPa]</item>
+        <item>terapascal [TPa]</item>
+        <item>gigapascal [GPa]</item>
+        <item>megapascal [MPa]</item>
+        <item>hectopascal [hPa]</item>
+        <item>dekapascal [daPa]</item>
+        <item>decipascal [dPa]</item>
+        <item>centipascal [cPa]</item>
+        <item>millipascal [mPa]</item>
+        <item>micropascal [&#181;Pa]</item>
+        <item>nanopascal [nPa]</item>
+        <item>picopascal [pPa]</item>
+        <item>femtopascal [fPa]</item>
+        <item>attopascal [aPa]</item>
+        <item>newton/square meter</item>
+        <item>newton/square centimeter</item>
+        <item>newton/square millimeter</item>
+        <item>kilonewton/square meter</item>
+        <item>millibar [mbar]</item>
+        <item>microbar [&#181;bar]</item>
+        <item>dyne/square centimeter</item>
+        <item>kilogram-force/square meter</item>
+        <item>kilogram-force/sq. cm</item>
+        <item>kilogram-force/sq. millimeter</item>
+        <item>gram-force/sq. centimeter</item>
+        <item>ton-force (short)/sq. foot</item>
+        <item>ton-force (short)/sq. inch</item>
+        <item>ton-force (long)/square foot</item>
+        <item>ton-force (long)/square inch</item>
+        <item>kip-force/square inch</item>
+        <item>pound-force/square foot</item>
+        <item>pound-force/square inch</item>
+        <item>poundal/square foot</item>
+        <item>torr [Torr]</item>
+        <item>centimeter mercury (0°C)</item>
+        <item>millimeter mercury (0°C)</item>
+        <item>inch mercury (32°F) [inHg]</item>
+        <item>inch mercury (60°F) [inHg]</item>
+        <item>centimeter water (4°C)</item>
+        <item>millimeter water (4°C)</item>
+        <item>inch water (4°C) [inAq]</item>
+        <item>foot water (4°C) [ftAq]</item>
+        <item>inch water (60°F) [inAq]</item>
+        <item>foot water (60°F) [ftAq]</item>
+        <item>atmosphere technical [at]</item>
+    </string-array>
+
+    <string name="title_activity_settings">Settings</string>
+
+</resources>

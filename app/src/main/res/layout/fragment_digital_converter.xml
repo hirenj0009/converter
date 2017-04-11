@@ -1,0 +1,49 @@
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.hirenj.convertor.fragement.DigitalConverter">
+
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+
+        <EditText
+            android:id="@+id/topValueText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:ems="10"
+            android:hint="@string/enter_value"
+            android:inputType="numberDecimal" />
+
+        <Spinner
+            android:id="@+id/topOptionsSpinner"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@id/topValueText"
+            android:layout_alignParentTop="true"
+            android:layout_toEndOf="@id/topValueText" />
+
+        <EditText
+            android:id="@+id/bottomTimeText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:ems="10"
+            android:hint="@string/enter_value"
+            android:inputType="numberDecimal"
+            android:layout_below="@id/topValueText"/>
+
+        <Spinner
+            android:id="@+id/bottomTimeSpinner"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@id/bottomTimeText"
+            android:layout_toEndOf="@id/bottomTimeText"
+            android:layout_below="@+id/topValueText" />
+
+    </RelativeLayout>
+
+</FrameLayout>
