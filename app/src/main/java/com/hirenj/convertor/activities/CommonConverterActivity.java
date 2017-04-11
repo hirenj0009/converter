@@ -43,7 +43,7 @@ public class CommonConverterActivity extends AppCompatActivity {
     private String type;
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    protected void onCreate(Bundle savedInstanceState) { 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_common_converter);
 
