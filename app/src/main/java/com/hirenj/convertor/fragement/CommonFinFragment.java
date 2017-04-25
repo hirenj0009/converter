@@ -112,6 +112,10 @@ public class CommonFinFragment extends Fragment {
         prepareListData("Converters");
         ExpandableListAdapter expListAdapter = new ExpandableListAdapter(this.getContext(), listDataHeader, listDataChild,mParam1);
         converterCategoryExpandableList.setAdapter(expListAdapter);
+        if(favourites.size() < 5){
+            converterCategoryExpandableList.expandGroup(0);
+        }
+
 
 
         converterCategoryExpandableList.setOnChildClickListener(new ExpandableListView.OnChildClickListener()

@@ -71,7 +71,7 @@ public class SettingsActivity extends AppCompatActivity {
 
     }
 
-    public void changeTheme(View view){
+    /*public void changeTheme(View view){
         themeSwitch = (Switch) findViewById(R.id.themeSwitch);
 
         if(themeSwitch.isChecked()){
@@ -79,5 +79,5 @@ public class SettingsActivity extends AppCompatActivity {
             recreate();
             getApplication().setTheme(R.style.AppThemeLight);
         }
-    }
+    }*/
 }
