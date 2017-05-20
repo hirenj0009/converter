@@ -73,14 +73,13 @@ public class DigitalConverter extends Fragment {
         bottomDigiSpinner.setAdapter(adapter);
 
 
-
         topDigiValue = (EditText) view.findViewById(R.id.topValueText);
         topDigiValue.addTextChangedListener(topWatch);
 
         bottomDigiValue = (EditText) view.findViewById(R.id.bottomTimeText);
         bottomDigiValue.addTextChangedListener(bottomWatch);
 
-        topDigiSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener(){
+        topDigiSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
 
             @Override
             public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
@@ -93,7 +92,7 @@ public class DigitalConverter extends Fragment {
             }
         });
 
-        bottomDigiSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener(){
+        bottomDigiSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
 
             @Override
             public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
@@ -117,7 +116,7 @@ public class DigitalConverter extends Fragment {
 
         @Override
         public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-            if(topDigiValue.hasFocus()){
+            if (topDigiValue.hasFocus()) {
                 topTextChange();
             }
         }
@@ -137,7 +136,7 @@ public class DigitalConverter extends Fragment {
 
         @Override
         public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-            if(bottomDigiValue.hasFocus()){
+            if (bottomDigiValue.hasFocus()) {
                 bottomTextChange();
             }
         }
@@ -188,16 +187,16 @@ public class DigitalConverter extends Fragment {
     }
 
 
-    private void setParams(){
+    private void setParams() {
 
         Selected_top_digi_value = topDigiSpinner.getSelectedItem().toString();
         Selected_bottom_digi_value = bottomDigiSpinner.getSelectedItem().toString();
-        Selected_top_digi_value = Selected_top_digi_value.substring(Selected_top_digi_value.indexOf("(")+1, Selected_top_digi_value.lastIndexOf(")"));
-        Selected_bottom_digi_value = Selected_bottom_digi_value.substring(Selected_bottom_digi_value.indexOf("(")+1, Selected_bottom_digi_value.lastIndexOf(")"));
+        Selected_top_digi_value = Selected_top_digi_value.substring(Selected_top_digi_value.indexOf("(") + 1, Selected_top_digi_value.lastIndexOf(")"));
+        Selected_bottom_digi_value = Selected_bottom_digi_value.substring(Selected_bottom_digi_value.indexOf("(") + 1, Selected_bottom_digi_value.lastIndexOf(")"));
 
     }
 
-    private void topTextChange(){
+    private void topTextChange() {
         /*setParams();
         Convert conv = new Convert();
         double convertedValue = 0;
@@ -207,7 +206,7 @@ public class DigitalConverter extends Fragment {
         bottomDigiValue.setText(convertedValue+"");*/
     }
 
-    private void bottomTextChange(){
+    private void bottomTextChange() {
         {
             /*setParams();
             Convert conv = new Convert();

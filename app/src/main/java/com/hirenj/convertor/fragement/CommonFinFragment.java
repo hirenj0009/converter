@@ -1,45 +1,34 @@
 package com.hirenj.convertor.fragement;
 
 import android.content.Context;
-import android.content.Intent;
 import android.content.SharedPreferences;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v7.widget.DefaultItemAnimator;
+import android.support.v7.widget.DividerItemDecoration;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ExpandableListView;
 
-import com.google.gson.Gson;
-import com.google.gson.reflect.TypeToken;
 import com.hirenj.convertor.R;
-import com.hirenj.convertor.activities.CommonConverterActivity;
-import com.hirenj.convertor.adapters.ExpandableListAdapter;
+import com.hirenj.convertor.adapters.RecyclerViewAdapter;
 import com.hirenj.convertor.common.CommonAccess;
 import com.hirenj.convertor.constants.CommonConstants;
 
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 /**
  * Created by Hiren J on 4/8/2017.
  */
 public class CommonFinFragment extends Fragment {
 
-    public static ExpandableListView favouriteExpandableList;
-    ExpandableListView converterCategoryExpandableList;
 
-    List<String> listDataHeader;
-    HashMap<String, List<String>> listDataChild;
-
-    List<String> favListDataHeader;
-    HashMap<String, List<String>> favListDataChild;
-
-    public static List<String> favourites;
+    RecyclerView finRecyclerList;
 
     public static List<String> converters;
 
@@ -80,109 +69,33 @@ public class CommonFinFragment extends Fragment {
                              Bundle savedInstanceState) {
 
         View view = inflater.inflate(R.layout.common_fin_fragment, container, false);
-        sharedPref = this.getContext().getSharedPreferences(CommonConstants.COMMON_FIN_CONV_PREF,Context.MODE_PRIVATE);
+        sharedPref = this.getContext().getSharedPreferences(CommonConstants.COMMON_FIN_CONV_PREF, Context.MODE_PRIVATE);
 
 
-        favouriteExpandableList = (ExpandableListView) view.findViewById(R.id.favouriteFinExpandableList);
-
-        prepareListData("Favourite");
-        ExpandableListAdapter expFavListAdapter = new ExpandableListAdapter(this.getContext(), favListDataHeader, favListDataChild,mParam1);
-        favouriteExpandableList.setAdapter(expFavListAdapter);
-        favouriteExpandableList.expandGroup(0);
-        favouriteExpandableList.setOnChildClickListener(new ExpandableListView.OnChildClickListener()
-        {
-            @Override
-            public boolean onChildClick(ExpandableListView parent, View view, int groupPosition, int childPosition, long l) {
-
-                String value = favListDataChild.get(
-                        favListDataHeader.get(groupPosition)).get(
-                        childPosition);
-
-                Intent intent = new Intent(getActivity(), CommonConverterActivity.class);
-                intent.putExtra("type",value);
-                startActivity(intent);
-
-                return false;
-            }
-        });
-
-
-
-        converterCategoryExpandableList = (ExpandableListView) view.findViewById(R.id.converterCategoryExpandableList);
-        prepareListData("Converters");
-        ExpandableListAdapter expListAdapter = new ExpandableListAdapter(this.getContext(), listDataHeader, listDataChild,mParam1);
-        converterCategoryExpandableList.setAdapter(expListAdapter);
-        if(favourites.size() < 5){
-            converterCategoryExpandableList.expandGroup(0);
-        }
-
-
-
-        converterCategoryExpandableList.setOnChildClickListener(new ExpandableListView.OnChildClickListener()
-        {
-            @Override
-            public boolean onChildClick(ExpandableListView parent, View view, int groupPosition, int childPosition, long l) {
-
-                String value = listDataChild.get(
-                        listDataHeader.get(groupPosition)).get(
-                        childPosition);
-
-                Intent intent = new Intent(getActivity(), CommonConverterActivity.class);
-                intent.putExtra("type",value);
-                startActivity(intent);
-
-                return false;
-            }
-        });
-
+        finRecyclerList = (RecyclerView) view.findViewById(R.id.finRecyclerList);
+        prepareListData();
+        RecyclerViewAdapter expListAdapter = new RecyclerViewAdapter(converters, mParam1);
+        RecyclerView.LayoutManager commonLayoutManager = new LinearLayoutManager(this.getContext());
+        finRecyclerList.setLayoutManager(commonLayoutManager);
+        finRecyclerList.setItemAnimator(new DefaultItemAnimator());
+        finRecyclerList.addItemDecoration(new DividerItemDecoration(this.getContext(), LinearLayoutManager.VERTICAL));
+        finRecyclerList.setAdapter(expListAdapter);
 
 
         return view;
     }
 
-    private void prepareListData(String listType) {
+    private void prepareListData() {
 
-        if("Favourite".equals(listType)){
-            favListDataHeader = new ArrayList<>();
-            favListDataChild = new HashMap<>();
+        converters = new ArrayList<>(Arrays.asList(getResources().getStringArray(R.array.fin_converter_array)));
 
-            favListDataHeader.add("Favourite");
-
-            if(sharedPref != null){
-                Gson gson = new Gson();
-                favourites = gson.fromJson(sharedPref.getString("commonFinFav",""),new TypeToken<List<String>>(){}.getType());
+        int i = 0;
+        while (converters.size() > i) {
+            if (!CommonAccess.convertersStatMap.containsKey(converters.get(i))) {
+                CommonAccess.convertersStatMap.put(converters.get(i), false);
             }
-
-            if(favourites == null){
-                favourites = new ArrayList<>();
-            }else{
-                for(String fav:favourites){
-                    CommonAccess.convertersStatMap.put(fav,true);
-                }
-            }
-
-            favListDataChild.put(favListDataHeader.get(0), favourites);
-        }else{
-            listDataHeader = new ArrayList<>();
-            listDataChild = new HashMap<>();
-
-            // Adding child data
-            listDataHeader.add("Converters");
-
-            // Adding child data
-            converters = new ArrayList<>(Arrays.asList(getResources().getStringArray(R.array.fin_converter_array)));
-
-            int i=0;
-            while (converters.size()>i){
-                if(!CommonAccess.convertersStatMap.containsKey(converters.get(i))) {
-                    CommonAccess.convertersStatMap.put(converters.get(i), false);
-                }
-                i++;
-            }
-            // Header, Child data
-            listDataChild.put(listDataHeader.get(0), converters);
+            i++;
         }
-
     }
 
     @Override
@@ -198,13 +111,6 @@ public class CommonFinFragment extends Fragment {
 
     @Override
     public void onDetach() {
-
-        Gson gson = new Gson();
-
-        SharedPreferences.Editor editor = sharedPref.edit();
-        editor.putString("commonFinFav",gson.toJson(favourites));
-        editor.apply();
-
         super.onDetach();
         mListener = null;
     }

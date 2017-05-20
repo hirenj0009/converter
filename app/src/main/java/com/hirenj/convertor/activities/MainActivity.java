@@ -3,11 +3,11 @@ package com.hirenj.convertor.activities;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
+import android.support.design.widget.NavigationView;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
-import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.view.ViewPager;
 import android.support.v4.widget.DrawerLayout;
@@ -21,13 +21,14 @@ import com.hirenj.convertor.R;
 import com.hirenj.convertor.fragement.CommonFinFragment;
 import com.hirenj.convertor.fragement.CommonFragment;
 import com.hirenj.convertor.fragement.DigitalConverter;
+import com.hirenj.convertor.fragement.FavouriteFragment;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class MainActivity extends AppCompatActivity
-        implements NavigationView.OnNavigationItemSelectedListener, CommonFinFragment.OnFragmentInteractionListener,DigitalConverter.OnFragmentInteractionListener,
-                    CommonFragment.OnFragmentInteractionListener{
+        implements NavigationView.OnNavigationItemSelectedListener, CommonFinFragment.OnFragmentInteractionListener, DigitalConverter.OnFragmentInteractionListener,
+        CommonFragment.OnFragmentInteractionListener, FavouriteFragment.OnFragmentInteractionListener {
 
 
     private TabLayout tabLayout;
@@ -43,7 +44,7 @@ public class MainActivity extends AppCompatActivity
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
-            this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
+                this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
         drawer.setDrawerListener(toggle);
         toggle.syncState();
 
@@ -61,8 +62,9 @@ public class MainActivity extends AppCompatActivity
 
     private void setupViewPager(ViewPager viewPager) {
         ViewPagerAdapter adapter = new ViewPagerAdapter(getSupportFragmentManager());
-        adapter.addFragment(CommonFragment.newInstance("Common",""), "Common");
-        adapter.addFragment(CommonFinFragment.newInstance("Finance",""), "Finance");
+        adapter.addFragment(FavouriteFragment.newInstance("Favourite", ""), "Favourite");
+        adapter.addFragment(CommonFragment.newInstance("Common", ""), "Common");
+        adapter.addFragment(CommonFinFragment.newInstance("Finance", ""), "Finance");
 
         viewPager.setAdapter(adapter);
     }
@@ -140,13 +142,13 @@ public class MainActivity extends AppCompatActivity
             Intent sharingIntent = new Intent(android.content.Intent.ACTION_SEND);
             sharingIntent.setType("text/plain");
             String shareBodyText = "Check out this app: https://play.google.com/store/apps/details?id=com.hirenj.convertor";
-            sharingIntent.putExtra(android.content.Intent.EXTRA_SUBJECT,"Unit Converter");
+            sharingIntent.putExtra(android.content.Intent.EXTRA_SUBJECT, "Unit Converter");
             sharingIntent.putExtra(android.content.Intent.EXTRA_TEXT, shareBodyText);
             startActivity(Intent.createChooser(sharingIntent, "Choose Sharing Option"));
         } else if (id == R.id.nav_send) {
             Intent Email = new Intent(Intent.ACTION_SEND);
             Email.setType("text/email");
-            Email.putExtra(Intent.EXTRA_EMAIL, new String[] { "hirenj0009@gmail.com" });
+            Email.putExtra(Intent.EXTRA_EMAIL, new String[]{"hirenj0009@gmail.com"});
             Email.putExtra(Intent.EXTRA_SUBJECT, "Feedback on Unit Converter (Beta)");
             Email.putExtra(Intent.EXTRA_TEXT, "Dear Dev," + "");
             startActivity(Intent.createChooser(Email, "Send Feedback via:"));
@@ -159,7 +161,7 @@ public class MainActivity extends AppCompatActivity
     }
 
     @Override
-    public void onFragmentInteraction(Uri uri){
+    public void onFragmentInteraction(Uri uri) {
         //you can leave it empty
     }
 }

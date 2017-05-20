@@ -11,7 +11,7 @@
         android:paddingStart="?android:attr/expandableListPreferredChildPaddingLeft" />
 
     <ToggleButton
-        android:id="@+id/favouriteToggle"
+        android:id="@+id/favouriteDummyToggle"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_weight="0.14"

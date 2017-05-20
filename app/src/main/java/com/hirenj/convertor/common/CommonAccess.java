@@ -9,6 +9,8 @@ import java.util.Map;
 
 public class CommonAccess {
 
-    public static Map<String,Boolean> convertersStatMap = new HashMap<>();
+    public static Map<String, Boolean> convertersStatMap = new HashMap<>();
+
+    //public static List<String> favConverters = new ArrayList<>();
 
 }

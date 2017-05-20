@@ -6,6 +6,8 @@
 
     <string name="action_settings">Preferences</string>
 
+    <string name="fav">Favourite</string>
+    <string name="conv">Converter</string>
 
     <!--Setting Strings-->
     <string name="decimal_setting">Decimal Scale</string>

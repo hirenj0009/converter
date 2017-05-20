@@ -4,26 +4,12 @@
     android:layout_height="match_parent"
     tools:context="com.hirenj.convertor.fragement.CommonFinFragment">
 
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical">
-
-        <ExpandableListView
-            android:id="@+id/favouriteExpandableList"
-            android:layout_width="fill_parent"
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/commonRecyclerList"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:scrollbars="vertical"
+            android:clickable="false"
+
             />
-
-        <ExpandableListView
-            android:id="@+id/converterCategoryExpandableList"
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content" />
-
-
-    </LinearLayout>
-
-
-
 </FrameLayout>

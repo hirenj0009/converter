@@ -1,14 +1,11 @@
 package com.hirenj.convertor.activities;
 
 import android.content.Context;
-import android.content.Intent;
 import android.content.SharedPreferences;
-import android.support.v4.app.TaskStackBuilder;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.ArrayAdapter;
-import android.widget.SimpleAdapter;
 import android.widget.Spinner;
 import android.widget.Switch;
 
@@ -29,20 +26,20 @@ public class SettingsActivity extends AppCompatActivity {
         setContentView(R.layout.activity_settings);
 
         //getting decimal value if saved by user earlier
-        sharedPref = this.getSharedPreferences(CommonConstants.SETTING_PREF,Context.MODE_PRIVATE);
-        int decimalValue = sharedPref.getInt(getString(R.string.decimal_value),4);
+        sharedPref = this.getSharedPreferences(CommonConstants.SETTING_PREF, Context.MODE_PRIVATE);
+        int decimalValue = sharedPref.getInt(getString(R.string.decimal_value), 4);
 
         decimalSettingSpinner = (Spinner) findViewById(R.id.decimalSettingSpinner);
 
         ArrayList<String> decimalSettingOptions = new ArrayList<>();
-        for(int i=0;i<=10;i++){
-            decimalSettingOptions.add(i+"");
+        for (int i = 0; i <= 10; i++) {
+            decimalSettingOptions.add(i + "");
         }
 
-        ArrayAdapter<String> adapter  =new ArrayAdapter<>(this,android.R.layout.simple_spinner_item, decimalSettingOptions);
+        ArrayAdapter<String> adapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, decimalSettingOptions);
         decimalSettingSpinner.setAdapter(adapter);
 
-        int spinnerPosition = adapter.getPosition(decimalValue+"");
+        int spinnerPosition = adapter.getPosition(decimalValue + "");
         decimalSettingSpinner.setSelection(spinnerPosition); //Setting previous saved decimal value if any
 
         setTitle("Preferences");
@@ -50,7 +47,7 @@ public class SettingsActivity extends AppCompatActivity {
     }
 
 
-    public void saveSettings(View view){
+    public void saveSettings(View view) {
 
         //saving user selected value to shared preference
         int decimalValue = Integer.parseInt(decimalSettingSpinner.getSelectedItem().toString());
@@ -64,7 +61,7 @@ public class SettingsActivity extends AppCompatActivity {
 
     }
 
-    public void cancelSettings(View view){
+    public void cancelSettings(View view) {
 
         //close activity
         finish();

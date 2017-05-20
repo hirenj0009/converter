@@ -1,26 +1,24 @@
 package com.hirenj.convertor.adapters;
 
-import java.util.HashMap;
-import java.util.List;
-
 import android.content.Context;
 import android.graphics.Typeface;
-import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseExpandableListAdapter;
 import android.widget.TextView;
-import android.widget.ToggleButton;
 
 import com.hirenj.convertor.R;
-import com.hirenj.convertor.common.CommonAccess;
-import com.hirenj.convertor.fragement.CommonFinFragment;
-import com.hirenj.convertor.fragement.CommonFragment;
+
+import java.util.HashMap;
+import java.util.List;
 
 /**
  * Created by Hiren J on 4/2/2017.
  */
+
+//This is custom Expandable List view adapter that contains Text and a toggle button, clicking on toggle button of 2ed list
+//Adds that item in 1st or favorite expandable list
 
 public class ExpandableListAdapter extends BaseExpandableListAdapter {
 
@@ -55,7 +53,7 @@ public class ExpandableListAdapter extends BaseExpandableListAdapter {
 
         final String childText = (String) getChild(groupPosition, childPosition);
 
-        if("Favourite".equals(_listDataHeader.get(groupPosition))){
+        if ("Favourite".equals(_listDataHeader.get(groupPosition))) {
             if (convertView == null) {
                 LayoutInflater infalInflater = (LayoutInflater) this._context
                         .getSystemService(Context.LAYOUT_INFLATER_SERVICE);
@@ -65,7 +63,7 @@ public class ExpandableListAdapter extends BaseExpandableListAdapter {
             TextView txtListChild = (TextView) convertView.findViewById(R.id.favouriteListItem);
 
             txtListChild.setText(childText);
-        }else{
+        } else {
 
             if (convertView == null) {
                 LayoutInflater infalInflater = (LayoutInflater) this._context
@@ -73,18 +71,17 @@ public class ExpandableListAdapter extends BaseExpandableListAdapter {
                 convertView = infalInflater.inflate(R.layout.converter_list_item, null);
             }
 
-            final ToggleButton togg = (ToggleButton) convertView.findViewById(R.id.favouriteToggle);
+            //final ToggleButton togg = (ToggleButton) convertView.findViewById(R.id.favouriteToggle);
 
-            final Fragment fragment;
 
-            if(togg != null){
+            /*if(togg != null){
                 togg.setOnClickListener(new ToggleButton.OnClickListener() {
 
                     public void onClick(View v) {
 
                         List<String> favourites = null;
                         if("Common".equals(favType)){
-                            favourites = CommonFragment.favourites;
+                            //favourites = CommonFragment.favourites;
 
                             if(togg.isChecked() && !favourites.contains(childText)){
                                 favourites.add(childText);
@@ -94,10 +91,10 @@ public class ExpandableListAdapter extends BaseExpandableListAdapter {
                                 CommonAccess.convertersStatMap.put(childText,false);
                             }
 
-                            CommonFragment.favouriteExpandableList.collapseGroup(0);
-                            CommonFragment.favouriteExpandableList.expandGroup(0);
+                            //CommonFragment.favouriteRecyclerList.collapseGroup(0);
+                            //CommonFragment.favouriteRecyclerList.expandGroup(0);
                         }else if("Finance".equals(favType)){
-                            favourites = CommonFinFragment.favourites;
+                            //favourites = CommonFinFragment.favourites;
 
                             if(togg.isChecked() && !favourites.contains(childText)){
                                 favourites.add(childText);
@@ -107,19 +104,19 @@ public class ExpandableListAdapter extends BaseExpandableListAdapter {
                                 CommonAccess.convertersStatMap.put(childText,false);
                             }
 
-                            CommonFinFragment.favouriteExpandableList.collapseGroup(0);
-                            CommonFinFragment.favouriteExpandableList.expandGroup(0);
+                            *//*CommonFinFragment.favouriteExpandableList.collapseGroup(0);
+                            CommonFinFragment.favouriteExpandableList.expandGroup(0);*//*
                         }
                     }
                 });
-            }
+            }*/
             TextView txtListChild = (TextView) convertView.findViewById(R.id.ConverterListItem);
 
-            if(CommonAccess.convertersStatMap.get(childText)){
+            /*if(CommonAccess.convertersStatMap.get(childText)){
                 togg.setChecked(true);
             }else{
                 togg.setChecked(false);
-            }
+            }*/
 
             txtListChild.setText(childText);
 
