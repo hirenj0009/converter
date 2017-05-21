@@ -7,7 +7,6 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.DefaultItemAnimator;
-import android.support.v7.widget.DividerItemDecoration;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.helper.ItemTouchHelper;
@@ -31,7 +30,7 @@ import java.util.List;
 public class CommonFragment extends Fragment {
 
 
-    RecyclerView converterCommonCategoryRecyclerList;
+    RecyclerView commonCategoryRecyclerListView;
 
     public static List<String> converters;
 
@@ -74,22 +73,27 @@ public class CommonFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_common, container, false);
         sharedPref = this.getContext().getSharedPreferences(CommonConstants.COMMON_CONV_PREF, Context.MODE_PRIVATE);
 
-        converterCommonCategoryRecyclerList = (RecyclerView) view.findViewById(R.id.commonRecyclerList);
+        commonCategoryRecyclerListView = (RecyclerView) view.findViewById(R.id.commonRecyclerList);
         prepareListData();
         RecyclerViewAdapter expListAdapter = new RecyclerViewAdapter(converters, mParam1);
         RecyclerView.LayoutManager commonLayoutManager = new LinearLayoutManager(this.getContext());
-        converterCommonCategoryRecyclerList.setLayoutManager(commonLayoutManager);
-        converterCommonCategoryRecyclerList.setItemAnimator(new DefaultItemAnimator());
-        converterCommonCategoryRecyclerList.addItemDecoration(new DividerItemDecoration(this.getContext(), LinearLayoutManager.VERTICAL));
-        converterCommonCategoryRecyclerList.setAdapter(expListAdapter);
+        commonCategoryRecyclerListView.setLayoutManager(commonLayoutManager);
+
+        //animator
+        RecyclerView.ItemAnimator itemAnimator = new DefaultItemAnimator();
+        commonCategoryRecyclerListView.setItemAnimator(itemAnimator);
+
+
+        //commonCategoryRecyclerListView.addItemDecoration(new DividerItemDecoration(this.getContext(), LinearLayoutManager.VERTICAL));
+        commonCategoryRecyclerListView.setAdapter(expListAdapter);
 
         //Code to make drag and drop items
         ItemTouchHelper.Callback callback = new SimpleItemTouchHelperCallback(expListAdapter);
         ItemTouchHelper touchHelper = new ItemTouchHelper(callback);
-        touchHelper.attachToRecyclerView(converterCommonCategoryRecyclerList);
+        touchHelper.attachToRecyclerView(commonCategoryRecyclerListView);
 
 
-        converterCommonCategoryRecyclerList.addOnItemTouchListener(new RecyclerTouchListener(this.getContext(), converterCommonCategoryRecyclerList, new RecyclerTouchListener.ClickListener() {
+        commonCategoryRecyclerListView.addOnItemTouchListener(new RecyclerTouchListener(this.getContext(), commonCategoryRecyclerListView, new RecyclerTouchListener.ClickListener() {
             @Override
             public void onClick(View view, int position) {
 

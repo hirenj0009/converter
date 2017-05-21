@@ -1,6 +1,7 @@
 package com.hirenj.convertor.adapters;
 
-import android.graphics.Color;
+import android.content.Context;
+import android.graphics.drawable.Drawable;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -24,8 +25,7 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
 
     private List<String> converterList;
     private String favType;
-    private TextView converterText;
-    private ToggleButton toggle = null;
+    private Context context;
 
 
     @Override
@@ -45,6 +45,8 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
     public class MyViewHolder extends RecyclerView.ViewHolder implements
             ItemTouchHelperViewHolder {
 
+        private TextView converterText;
+        private ToggleButton toggle = null;
 
         public MyViewHolder(View view) {
             super(view);
@@ -54,12 +56,12 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
 
         @Override
         public void onItemSelected() {
-            itemView.setBackgroundColor(Color.LTGRAY);
+            //itemView.setBackgroundColor(Color.LTGRAY); //removing color as  Elevation works with only non-transparent backgrounds on views
         }
 
         @Override
         public void onItemClear() {
-            itemView.setBackgroundColor(0);
+            //itemView.setBackgroundColor(0); //removing color as  Elevation works with only non-transparent backgrounds on views
         }
 
     }
@@ -71,6 +73,7 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
 
     @Override
     public MyViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+        context = parent.getContext();
         View itemView = LayoutInflater.from(parent.getContext())
                 .inflate(R.layout.converter_list_item, parent, false);
 
@@ -80,9 +83,9 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
     @Override
     public void onBindViewHolder(RecyclerViewAdapter.MyViewHolder holder, int position) {
         final String converter = converterList.get(position);
-        converterText.setText(converter);
+        holder.converterText.setText(converter);
 
-
+        ToggleButton toggle = holder.toggle;
         if (toggle != null) {
             toggle.setOnClickListener(new ToggleButton.OnClickListener() {
 
@@ -91,14 +94,19 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
                     RecyclerView favouritesRecyclerView = FavouriteFragment.favouriteRecyclerList;
                     RecyclerViewAdapter favouriteAdapter = (RecyclerViewAdapter) favouritesRecyclerView.getAdapter();
                     List<String> favourites = favouriteAdapter.getConverterList();
-                    if (toggle.isChecked() && !favourites.contains(converter)) {
-                        favourites.remove(converter);
-                        CommonAccess.convertersStatMap.put(converter, false);
-                    } else {
-                        favourites.add(converter);
-                        CommonAccess.convertersStatMap.put(converter, true);
+
+                    if ("Favourite".equals(favType)) {
+                        //favourites.remove(converter);
+                        //CommonAccess.convertersStatMap.put(converter, false);
+                    }else{
+                        if (favourites.contains(converter)) {
+                            favourites.remove(converter);
+                            CommonAccess.convertersStatMap.put(converter, false);
+                        } else {
+                            favourites.add(converter);
+                            CommonAccess.convertersStatMap.put(converter, true);
+                        }
                     }
-                    //favouriteAdapter.getToggle().setVisibility(View.INVISIBLE);
                     favouriteAdapter.setConverterList(favourites);
                     favouriteAdapter.notifyDataSetChanged();
                 }
@@ -106,6 +114,7 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
 
             if ("Favourite".equals(favType)) {
                 toggle.setVisibility(View.GONE);
+                //toggle.setBackgroundResource(R.drawable.ic_delete_24px); //Added delete icon, but to delete row from favourite adapter have to notify all adapters to change star icon
             } else {
                 if (CommonAccess.convertersStatMap.get(converter)) {
                     toggle.setChecked(true);
@@ -129,11 +138,4 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
         this.converterList = converterList;
     }
 
-    public ToggleButton getToggle() {
-        return toggle;
-    }
-
-    public void setToggle(ToggleButton toggle) {
-        this.toggle = toggle;
-    }
 }

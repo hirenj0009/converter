@@ -1,21 +1,26 @@
 package com.hirenj.convertor.fragement;
 
 import android.content.Context;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.DefaultItemAnimator;
-import android.support.v7.widget.DividerItemDecoration;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.helper.ItemTouchHelper;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 
 import com.hirenj.convertor.R;
+import com.hirenj.convertor.activities.CommonConverterActivity;
 import com.hirenj.convertor.adapters.RecyclerViewAdapter;
 import com.hirenj.convertor.common.CommonAccess;
+import com.hirenj.convertor.common.RecyclerTouchListener;
+import com.hirenj.convertor.common.dragAndDropHelper.SimpleItemTouchHelperCallback;
 import com.hirenj.convertor.constants.CommonConstants;
 
 import java.util.ArrayList;
@@ -68,7 +73,7 @@ public class CommonFinFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
 
-        View view = inflater.inflate(R.layout.common_fin_fragment, container, false);
+        View view = inflater.inflate(R.layout.fragment_finance, container, false);
         sharedPref = this.getContext().getSharedPreferences(CommonConstants.COMMON_FIN_CONV_PREF, Context.MODE_PRIVATE);
 
 
@@ -78,9 +83,37 @@ public class CommonFinFragment extends Fragment {
         RecyclerView.LayoutManager commonLayoutManager = new LinearLayoutManager(this.getContext());
         finRecyclerList.setLayoutManager(commonLayoutManager);
         finRecyclerList.setItemAnimator(new DefaultItemAnimator());
-        finRecyclerList.addItemDecoration(new DividerItemDecoration(this.getContext(), LinearLayoutManager.VERTICAL));
+        //finRecyclerList.addItemDecoration(new DividerItemDecoration(this.getContext(), LinearLayoutManager.VERTICAL));
         finRecyclerList.setAdapter(expListAdapter);
 
+        //Code to make drag and drop items
+        ItemTouchHelper.Callback callback = new SimpleItemTouchHelperCallback(expListAdapter);
+        ItemTouchHelper touchHelper = new ItemTouchHelper(callback);
+        touchHelper.attachToRecyclerView(finRecyclerList);
+
+        finRecyclerList.addOnItemTouchListener(new RecyclerTouchListener(this.getContext(), finRecyclerList, new RecyclerTouchListener.ClickListener() {
+            @Override
+            public void onClick(View view, int position) {
+
+                final TextView converterText = (TextView) view.findViewById(R.id.ConverterListItem);
+
+                converterText.setOnClickListener(new View.OnClickListener() {
+
+                    @Override
+                    public void onClick(View view) {
+                        Intent intent = new Intent(getActivity(), CommonConverterActivity.class);
+                        intent.putExtra("type", converterText.getText().toString());
+                        startActivity(intent);
+                    }
+                });
+
+            }
+
+            @Override
+            public void onLongClick(View view, int position) {
+
+            }
+        }));
 
         return view;
     }

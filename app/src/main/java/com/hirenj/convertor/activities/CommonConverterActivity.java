@@ -8,18 +8,22 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.DefaultItemAnimator;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
-import android.widget.ListView;
 import android.widget.Spinner;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.hirenj.convertor.R;
-import com.hirenj.convertor.adapters.ConvetResultListViewAdapter;
+import com.hirenj.convertor.adapters.ResultRecyclerViewAdapter;
+import com.hirenj.convertor.common.RecyclerTouchListener;
 import com.hirenj.convertor.constants.CommonConstants;
 import com.hirenj.convertor.convert.Convert;
 
@@ -32,7 +36,7 @@ public class CommonConverterActivity extends AppCompatActivity {
     EditText topLengthValue;
     Spinner topLengthSpinner;
 
-    ListView resultList;
+    RecyclerView resultList;
 
     String Selected_top_length_value;
     int decimalValue;
@@ -88,7 +92,7 @@ public class CommonConverterActivity extends AppCompatActivity {
         // Apply the adapter to the spinner
         topLengthSpinner.setAdapter(spinnerAdapter);
 
-        resultList = (ListView) findViewById(R.id.ResultList);
+        resultList = (RecyclerView) findViewById(R.id.ResultList);
 
         topLengthValue = (EditText) findViewById(R.id.topValueText);
         topLengthValue.addTextChangedListener(topWatch);
@@ -168,43 +172,39 @@ public class CommonConverterActivity extends AppCompatActivity {
                     i++;
                 }
 
-                ConvetResultListViewAdapter adapter = new ConvetResultListViewAdapter(this, list);
+                ResultRecyclerViewAdapter adapter = new ResultRecyclerViewAdapter(list);
+
+                RecyclerView.LayoutManager commonLayoutManager = new LinearLayoutManager(this);
+                resultList.setLayoutManager(commonLayoutManager);
+
+                //animator
+                RecyclerView.ItemAnimator itemAnimator = new DefaultItemAnimator();
+                resultList.setItemAnimator(itemAnimator);
+
                 resultList.setAdapter(adapter);
 
-                resultList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+
+                resultList.addOnItemTouchListener(new RecyclerTouchListener(this, resultList, new RecyclerTouchListener.ClickListener() {
                     @Override
-                    public void onItemClick(AdapterView<?> adapter, View v, int position,
-                                            long arg3) {
-                        String value = (String) ((HashMap) adapter.getItemAtPosition(position)).get(CommonConstants.FIRST_COLUMN);
+                    public void onClick(View view, int position) {
+
+                        final TextView converterText = (TextView) view.findViewById(R.id.valueListItem);
 
                         ClipboardManager clipboard = (ClipboardManager) getSystemService(Context.CLIPBOARD_SERVICE);
-                        ClipData clip = ClipData.newPlainText("value", value);
+                        ClipData clip = ClipData.newPlainText("value", converterText.getText().toString());
                         clipboard.setPrimaryClip(clip);
 
                         Toast.makeText(getApplicationContext(), "Copied", Toast.LENGTH_SHORT).show();
-
                     }
-                });
-
-                resultList.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
-
 
                     @Override
-                    public boolean onItemLongClick(AdapterView<?> adapter, View v, int position,
-                                                   long arg3) {
-                        String value = (String) ((HashMap) adapter.getItemAtPosition(position)).get(CommonConstants.SECOND_COLUMN);
+                    public void onLongClick(View view, int position) {
+                        final TextView converterText = (TextView) view.findViewById(R.id.unitListItem);
 
-                        int spinnerPosition = spinnerAdapter.getPosition(value);
+                        int spinnerPosition = spinnerAdapter.getPosition(converterText.getText().toString());
                         topLengthSpinner.setSelection(spinnerPosition);
-
-
-                        return false;
-
                     }
-
-
-                });
-
+                }));
             }
         } catch (Exception e) {
             e.printStackTrace();

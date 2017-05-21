@@ -93,12 +93,13 @@ public class FavouriteFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_favourite, container, false);
         favouriteRecyclerList = (RecyclerView) view.findViewById(R.id.favRecyclerList);
 
+        sharedPref = this.getContext().getSharedPreferences(CommonConstants.COMMON_CONV_PREF, Context.MODE_PRIVATE);
         prepareListData();
         RecyclerViewAdapter expFavListAdapter = new RecyclerViewAdapter(favourites, mParam1);
         RecyclerView.LayoutManager favLayoutManager = new LinearLayoutManager(this.getContext());
         favouriteRecyclerList.setLayoutManager(favLayoutManager);
         favouriteRecyclerList.setItemAnimator(new DefaultItemAnimator());
-        favouriteRecyclerList.addItemDecoration(new DividerItemDecoration(this.getContext(), LinearLayoutManager.VERTICAL));
+        //favouriteRecyclerList.addItemDecoration(new DividerItemDecoration(this.getContext(), LinearLayoutManager.VERTICAL));
         favouriteRecyclerList.setAdapter(expFavListAdapter);
 
         //Code to make drag and drop items
@@ -136,20 +137,16 @@ public class FavouriteFragment extends Fragment {
 
     private void prepareListData() {
 
-        sharedPref = this.getContext().getSharedPreferences(CommonConstants.COMMON_CONV_PREF, Context.MODE_PRIVATE);
-
-        if (sharedPref != null) {
-            Gson gson = new Gson();
-            favourites = gson.fromJson(sharedPref.getString("commonFav", ""), new TypeToken<List<String>>() {
-            }.getType());
+        if (favourites.size() == 0){
+            if (sharedPref != null) {
+                Gson gson = new Gson();
+                favourites = gson.fromJson(sharedPref.getString("commonFav", ""), new TypeToken<List<String>>() {
+                }.getType());
+            }
         }
 
-        if (favourites == null) {
-            favourites = new ArrayList<>();
-        } else {
-            for (String fav : favourites) {
-                CommonAccess.convertersStatMap.put(fav, true);
-            }
+        for (String fav : favourites) {
+            CommonAccess.convertersStatMap.put(fav, true);
         }
 
 

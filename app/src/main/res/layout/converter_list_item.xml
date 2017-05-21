@@ -1,32 +1,46 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout  xmlns:android="http://schemas.android.com/apk/res/android"
+
+<android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/cardView"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:focusable="true"
-    android:paddingLeft="16dp"
-    android:paddingRight="16dp"
-    android:paddingTop="10dp"
-    android:paddingBottom="10dp"
-    android:clickable="true"
-    android:background="?android:attr/selectableItemBackground"
-    android:orientation="vertical">
+    android:layout_height="70dp"
+    android:layout_gravity="center"
+    app:cardUseCompatPadding="true"
+    >
 
-    <TextView
-        android:id="@+id/ConverterListItem"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_toStartOf="@+id/favouriteToggle" />
+    <RelativeLayout android:layout_width="match_parent"
+        android:layout_height="fill_parent"
+        android:padding="7dp">
 
-    <ToggleButton
-        android:id="@+id/favouriteToggle"
-        android:layout_width="wrap_content"
-        android:layout_alignParentEnd="true"
-        android:layout_height="wrap_content"
-        android:background="@drawable/toggle_drawable"
-        android:focusable="false"
-        android:focusableInTouchMode="false"
-        android:textOff=""
-        android:textOn="" />
+        <ImageView
+            android:layout_width="10sp"
+            android:layout_height="wrap_content"
+            android:background="@drawable/ic_reorder_24px"
+            android:layout_centerVertical="true"/>
 
+        <TextView
+            android:id="@+id/ConverterListItem"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:layout_toStartOf="@+id/favouriteToggle"
+            android:layout_marginStart="10sp"
+            android:textColor="@color/colorAccent"
+            android:textSize="17sp"
+            android:textStyle="bold"
+            android:padding="10dp"/>
 
-</RelativeLayout >
+        <ToggleButton
+            android:id="@+id/favouriteToggle"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_alignParentEnd="true"
+            android:background="@drawable/toggle_drawable"
+            android:focusable="false"
+            android:focusableInTouchMode="false"
+            android:layout_centerVertical="true"
+            android:textOff=""
+            android:textOn="" />
+
+    </RelativeLayout>
+</android.support.v7.widget.CardView>
