@@ -23,6 +23,8 @@
     <string name="default_value">1</string>
 
 
+    <string name="search">Search</string>
+
     <!-- Nav Strings-->
     <string name="nav_currency">Currency</string>
     <string name="nav_digital">Digital</string>

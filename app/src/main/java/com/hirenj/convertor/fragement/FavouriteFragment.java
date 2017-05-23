@@ -141,10 +141,13 @@ public class FavouriteFragment extends Fragment {
             if (sharedPref != null) {
                 Gson gson = new Gson();
                 favourites = gson.fromJson(sharedPref.getString("commonFav", ""), new TypeToken<List<String>>() {
-                }.getType());
+                }.getType()); //this may be null that is why initializing it again below;
             }
         }
 
+        if(favourites == null){
+            favourites = new ArrayList<>();
+        }
         for (String fav : favourites) {
             CommonAccess.convertersStatMap.put(fav, true);
         }
