@@ -7,12 +7,18 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
+import android.support.design.widget.NavigationView;
+import android.support.v4.view.MenuItemCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.SearchView;
 import android.text.Editable;
 import android.text.TextWatcher;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -30,13 +36,14 @@ import com.hirenj.convertor.convert.Convert;
 import java.util.ArrayList;
 import java.util.HashMap;
 
-public class CommonConverterActivity extends AppCompatActivity {
+public class CommonConverterActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener{
 
 
     EditText topLengthValue;
     Spinner topLengthSpinner;
 
     RecyclerView resultList;
+    ResultRecyclerViewAdapter adapter;
 
     String Selected_top_length_value;
     int decimalValue;
@@ -172,7 +179,7 @@ public class CommonConverterActivity extends AppCompatActivity {
                     i++;
                 }
 
-                ResultRecyclerViewAdapter adapter = new ResultRecyclerViewAdapter(list);
+                adapter = new ResultRecyclerViewAdapter(list);
 
                 RecyclerView.LayoutManager commonLayoutManager = new LinearLayoutManager(this);
                 resultList.setLayoutManager(commonLayoutManager);
@@ -220,5 +227,39 @@ public class CommonConverterActivity extends AppCompatActivity {
         setResult(Activity.RESULT_OK, resultIntent);
         finish();
         super.onDestroy();
+    }
+
+    @Override
+    public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+
+        return true;
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.main, menu);
+
+        MenuItem search = menu.findItem(R.id.searchMain);
+        SearchView searchView = (SearchView) MenuItemCompat.getActionView(search);
+        search(searchView);
+        return true;
+    }
+
+    private void search(SearchView searchView) {
+
+        searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+            @Override
+            public boolean onQueryTextSubmit(String query) {
+
+                return false;
+            }
+
+            @Override
+            public boolean onQueryTextChange(String newText) {
+
+                adapter.getFilter().filter(newText);
+                return true;
+            }
+        });
     }
 }

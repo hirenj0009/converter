@@ -1,34 +1,33 @@
 package com.hirenj.convertor.adapters;
 
-import android.content.Context;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Filter;
+import android.widget.Filterable;
 import android.widget.TextView;
-import android.widget.ToggleButton;
 
 import com.hirenj.convertor.R;
-import com.hirenj.convertor.common.CommonAccess;
 import com.hirenj.convertor.common.dragAndDropHelper.ItemTouchHelperAdapter;
 import com.hirenj.convertor.common.dragAndDropHelper.ItemTouchHelperViewHolder;
 import com.hirenj.convertor.constants.CommonConstants;
-import com.hirenj.convertor.fragement.FavouriteFragment;
 
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.List;
 
 /**
  * Created by Hiren J on 5/21/2017.
  */
 
-public class ResultRecyclerViewAdapter extends RecyclerView.Adapter<ResultRecyclerViewAdapter.MyViewHolder> implements ItemTouchHelperAdapter {
+public class ResultRecyclerViewAdapter extends RecyclerView.Adapter<ResultRecyclerViewAdapter.MyViewHolder> implements ItemTouchHelperAdapter, Filterable {
 
     public ArrayList<HashMap<String, String>> list;
+    private ArrayList<HashMap<String, String>> filteredList;
 
     public ResultRecyclerViewAdapter(ArrayList<HashMap<String, String>> list) {
         this.list = list;
+        this.filteredList  = list;
     }
 
     public class MyViewHolder extends RecyclerView.ViewHolder implements
@@ -65,15 +64,15 @@ public class ResultRecyclerViewAdapter extends RecyclerView.Adapter<ResultRecycl
 
     @Override
     public void onBindViewHolder(ResultRecyclerViewAdapter.MyViewHolder holder, int position) {
-        final HashMap<String, String> result = list.get(position);
+        final HashMap<String, String> result = filteredList.get(position);
         holder.valueText.setText(result.get(CommonConstants.FIRST_COLUMN));
         holder.unitText.setText(result.get(CommonConstants.SECOND_COLUMN));
     }
 
     @Override
     public void onItemMove(int fromPosition, int toPosition) {
-        HashMap<String, String> prev = list.remove(fromPosition);
-        list.add(toPosition > fromPosition ? toPosition - 1 : toPosition, prev);
+        HashMap<String, String> prev = filteredList.remove(fromPosition);
+        filteredList.add(toPosition > fromPosition ? toPosition - 1 : toPosition, prev);
         notifyItemMoved(fromPosition, toPosition);
     }
 
@@ -85,6 +84,42 @@ public class ResultRecyclerViewAdapter extends RecyclerView.Adapter<ResultRecycl
 
     @Override
     public int getItemCount() {
-        return list.size();
+        return filteredList.size();
+    }
+
+    @Override
+    public Filter getFilter() {
+        return new Filter() {
+            @Override
+            protected FilterResults performFiltering(CharSequence charSequence) {
+
+                String charString = charSequence.toString();
+
+                if (charString.isEmpty()) {
+
+                    filteredList = list;
+                } else {
+
+                    ArrayList<HashMap<String, String>> mfilteredList = new ArrayList<>();
+
+                    for (HashMap<String, String> converterResult : list) {
+
+                        if (converterResult.get(CommonConstants.SECOND_COLUMN).toLowerCase().contains(charString.toLowerCase())) {
+                            mfilteredList.add(converterResult);
+                        }
+                    }
+
+                    filteredList = mfilteredList;
+                }
+                FilterResults filterResults = new FilterResults();
+                filterResults.values = filteredList;
+                return filterResults;
+            }
+            @Override
+            protected void publishResults(CharSequence charSequence, FilterResults filterResults) {
+                filteredList = (ArrayList<HashMap<String, String>>) filterResults.values;
+                notifyDataSetChanged();
+            }
+        };
     }
 }
