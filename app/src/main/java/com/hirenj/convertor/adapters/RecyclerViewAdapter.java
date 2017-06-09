@@ -1,7 +1,9 @@
 package com.hirenj.convertor.adapters;
 
 import android.content.Context;
+import android.content.Intent;
 import android.graphics.drawable.Drawable;
+import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -12,6 +14,7 @@ import android.widget.TextView;
 import android.widget.ToggleButton;
 
 import com.hirenj.convertor.R;
+import com.hirenj.convertor.activities.CommonConverterActivity;
 import com.hirenj.convertor.common.CommonAccess;
 import com.hirenj.convertor.common.dragAndDropHelper.ItemTouchHelperAdapter;
 import com.hirenj.convertor.common.dragAndDropHelper.ItemTouchHelperViewHolder;
@@ -24,7 +27,7 @@ import java.util.List;
  * Created by Hiren J on 5/13/2017.
  */
 
-public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapter.MyViewHolder> implements ItemTouchHelperAdapter {
+public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapter.MyViewHolder> implements ItemTouchHelperAdapter{
 
     private List<String> converterList;
     private String favType;
@@ -44,9 +47,8 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
         notifyItemRemoved(position);
     }
 
-
     public class MyViewHolder extends RecyclerView.ViewHolder implements
-            ItemTouchHelperViewHolder {
+            ItemTouchHelperViewHolder , View.OnClickListener{
 
         private TextView converterText;
         private ToggleButton toggle = null;
@@ -55,6 +57,8 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
             super(view);
             converterText = (TextView) view.findViewById(R.id.ConverterListItem);
             toggle = (ToggleButton) view.findViewById(R.id.favouriteToggle);
+
+            view.setOnClickListener(this);
         }
 
         @Override
@@ -67,6 +71,13 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
             //itemView.setBackgroundColor(0); //removing color as  Elevation works with only non-transparent backgrounds on views
         }
 
+        @Override
+        public void onClick(View view) {
+
+            Intent intent = new Intent(context, CommonConverterActivity.class);
+            intent.putExtra("type", converterText.getText().toString());
+            context.startActivity(intent);
+        }
     }
 
     public RecyclerViewAdapter(List<String> converterList, String favType) {

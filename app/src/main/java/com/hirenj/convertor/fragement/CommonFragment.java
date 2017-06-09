@@ -99,7 +99,7 @@ public class CommonFragment extends Fragment {
 
                 final TextView converterText = (TextView) view.findViewById(R.id.ConverterListItem);
 
-                converterText.setOnClickListener(new View.OnClickListener() {
+                /*converterText.setOnClickListener(new View.OnClickListener() {
 
                     @Override
                     public void onClick(View view) {
@@ -107,7 +107,7 @@ public class CommonFragment extends Fragment {
                         intent.putExtra("type", converterText.getText().toString());
                         startActivity(intent);
                     }
-                });
+                });*/
 
             }
 
