@@ -91,6 +91,22 @@ public class CommonConverterActivity extends AppCompatActivity implements Naviga
             spinnerAdapter = ArrayAdapter.createFromResource(this, R.array.speed_array, android.R.layout.simple_spinner_item);
         } else if (type.equals("Pressure")) {
             spinnerAdapter = ArrayAdapter.createFromResource(this, R.array.pressure_array, android.R.layout.simple_spinner_item);
+        }else if (type.equals("Velocity - Angular")) {
+            spinnerAdapter = ArrayAdapter.createFromResource(this, R.array.velocity_angular_array, android.R.layout.simple_spinner_item);
+        }else if (type.equals("Acceleration")) {
+            spinnerAdapter = ArrayAdapter.createFromResource(this, R.array.acceleration_array, android.R.layout.simple_spinner_item);
+        }else if (type.equals("Acceleration - Angular")) {
+            spinnerAdapter = ArrayAdapter.createFromResource(this, R.array.acceleration_angular_array, android.R.layout.simple_spinner_item);
+        }else if (type.equals("Density")) {
+            spinnerAdapter = ArrayAdapter.createFromResource(this, R.array.density_array, android.R.layout.simple_spinner_item);
+        }else if (type.equals("Specific Volume")) {
+            spinnerAdapter = ArrayAdapter.createFromResource(this, R.array.specific_volume_array, android.R.layout.simple_spinner_item);
+        }else if (type.equals("Moment of Inertia")) {
+            spinnerAdapter = ArrayAdapter.createFromResource(this, R.array.moment_of_inertia_array, android.R.layout.simple_spinner_item);
+        }else if (type.equals("Moment of Force")) {
+            spinnerAdapter = ArrayAdapter.createFromResource(this, R.array.moment_of_force_array, android.R.layout.simple_spinner_item);
+        }else if (type.equals("Torque")) {
+            spinnerAdapter = ArrayAdapter.createFromResource(this, R.array.torque_array, android.R.layout.simple_spinner_item);
         }
 
 

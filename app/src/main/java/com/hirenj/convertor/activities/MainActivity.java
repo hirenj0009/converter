@@ -28,6 +28,7 @@ import android.view.MenuItem;
 import android.widget.Filter;
 
 import com.hirenj.convertor.R;
+import com.hirenj.convertor.fragement.CommonEngineeringFragment;
 import com.hirenj.convertor.fragement.CommonFinFragment;
 import com.hirenj.convertor.fragement.CommonFragment;
 import com.hirenj.convertor.fragement.DigitalConverter;
@@ -39,7 +40,7 @@ import java.util.List;
 
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener, CommonFinFragment.OnFragmentInteractionListener, DigitalConverter.OnFragmentInteractionListener,
-        CommonFragment.OnFragmentInteractionListener, FavouriteFragment.OnFragmentInteractionListener {
+        CommonFragment.OnFragmentInteractionListener, FavouriteFragment.OnFragmentInteractionListener, CommonEngineeringFragment.OnFragmentInteractionListener {
 
 
     private TabLayout tabLayout;
@@ -65,6 +66,7 @@ public class MainActivity extends AppCompatActivity
 
         strArrData.addAll(new ArrayList<>(Arrays.asList(getResources().getStringArray(R.array.common_converter_array))));
         strArrData.addAll(new ArrayList<>(Arrays.asList(getResources().getStringArray(R.array.fin_converter_array))));
+        strArrData.addAll(new ArrayList<>(Arrays.asList(getResources().getStringArray(R.array.engg_converter_array))));
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
@@ -89,6 +91,7 @@ public class MainActivity extends AppCompatActivity
         adapter.addFragment(FavouriteFragment.newInstance("Favourite", ""), "Favourite");
         adapter.addFragment(CommonFragment.newInstance("Common", ""), "Common");
         adapter.addFragment(CommonFinFragment.newInstance("Finance", ""), "Finance");
+        adapter.addFragment(CommonEngineeringFragment.newInstance("Engineering", ""), "Engineering");
 
         viewPager.setAdapter(adapter);
     }

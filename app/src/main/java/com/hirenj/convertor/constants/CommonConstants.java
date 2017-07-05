@@ -13,5 +13,6 @@ public class CommonConstants {
 
     public static final String COMMON_CONV_PREF = "CommonConverterPreference";
     public static final String COMMON_FIN_CONV_PREF = "CommonFinConverterPreference";
+    public static final String COMMON_ENGG_CONV_PREF = "CommonEnggConverterPreference";
 
 }

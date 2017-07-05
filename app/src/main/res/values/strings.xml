@@ -52,6 +52,17 @@
         <item>Currency</item>
     </string-array>
 
+    <string-array name="engg_converter_array">
+        <item>Velocity - Angular</item>
+        <item>Acceleration</item>
+        <item>Acceleration - Angular</item>
+        <item>Density</item>
+        <item>Specific Volume</item>
+        <item>Moment of Inertia</item>
+        <item>Moment of Force</item>
+        <item>Torque</item>
+    </string-array>
+
     <!--Currency Converter Spinner Values-->
     <string-array name="currency_Array">
         <item>BGN - Bulgarian Lev</item>
@@ -468,7 +479,7 @@
         <item>Mach (SI standard)</item>
     </string-array>
 
-    <!--Speed Converter Spinner Values-->
+    <!--Pressure Converter Spinner Values-->
     <string-array name="pressure_array">
         <item>pascal [Pa]</item>
         <item>kilopascal [kPa]</item>
@@ -522,6 +533,167 @@
         <item>inch water (60°F) [inAq]</item>
         <item>foot water (60°F) [ftAq]</item>
         <item>atmosphere technical [at]</item>
+    </string-array>
+
+    <!--Velocity - Angular Converter Spinner Values-->
+    <string-array name="velocity_angular_array">
+        <item>radian/second [rad/s]</item>
+        <item>radian/day [rad/d]</item>
+        <item>radian/hour [rad/h]</item>
+        <item>radian/minute [rad/min]</item>
+        <item>degree/day [°/d]</item>
+        <item>degree/hour [°/h]</item>
+        <item>degree/minute [°/min]</item>
+        <item>degree/second [°/s]</item>
+        <item>revolution/day [r/d]</item>
+        <item>revolution/hour [r/h]</item>
+        <item>revolution/minute [r/min]</item>
+        <item>revolution/second [r/s]</item>
+    </string-array>
+
+    <!--Acceleration Converter Spinner Values-->
+    <string-array name="acceleration_array">
+        <item>meter/square second</item>
+        <item>decimeter/square second</item>
+        <item>kilometer/square second</item>
+        <item>hectometer/square second</item>
+        <item>dekameter/square second</item>
+        <item>centimeter/square second</item>
+        <item>millimeter/square second</item>
+        <item>micrometer/square second</item>
+        <item>nanometer/square second</item>
+        <item>picometer/square second</item>
+        <item>femtometer/square second</item>
+        <item>attometer/square second</item>
+        <item>gal [Gal]</item>
+        <item>galileo [Gal]</item>
+        <item>mile/square second [mi/s^2]</item>
+        <item>yard/square second</item>
+        <item>foot/square second [ft/s^2]</item>
+        <item>inch/square second [in/s^2]</item>
+        <item>Acceleration of gravity [g]</item>
+    </string-array>
+
+    <!--Acceleration - Angular Converter Spinner Values-->
+    <string-array name="acceleration_angular_array">
+        <item>radian/square second</item>
+        <item>radian/square minute</item>
+        <item>revolution/square second</item>
+        <item>revolution/minute/second</item>
+        <item>revolution/square minute</item>
+    </string-array>
+
+    <!--Density Converter Spinner Values-->
+    <string-array name="density_array">
+        <item>kilogram/cubic meter</item>
+        <item>gram/cubic centimeter</item>
+        <item>kilogram/cubic centimeter</item>
+        <item>gram/cubic meter [g/m^3]</item>
+        <item>gram/cubic millimeter</item>
+        <item>milligram/cubic meter</item>
+        <item>milligram/cubic centimeter</item>
+        <item>milligram/cubic millimeter</item>
+        <item>exagram/liter [Eg/L]</item>
+        <item>petagram/liter [Pg/L]</item>
+        <item>teragram/liter [Tg/L]</item>
+        <item>gigagram/liter [Gg/L]</item>
+        <item>megagram/liter [Mg/L]</item>
+        <item>kilogram/liter [kg/L]</item>
+        <item>hectogram/liter [hg/L]</item>
+        <item>dekagram/liter [dag/L]</item>
+        <item>gram/liter [g/L]</item>
+        <item>decigram/liter [dg/L]</item>
+        <item>centigram/liter [cg/L]</item>
+        <item>milligram/liter [mg/L]</item>
+        <item>microgram/liter [&#181;g/L]</item>
+        <item>nanogram/liter [ng/L]</item>
+        <item>picogram/liter [pg/L]</item>
+        <item>femtogram/liter [fg/L]</item>
+        <item>attogram/liter [ag/L]</item>
+        <item>pound/cubic inch [lb/in^3]</item>
+        <item>pound/cubic foot [lb/ft^3]</item>
+        <item>pound/cubic yard [lb/yd^3]</item>
+        <item>pound/gallon (US)</item>
+        <item>pound/gallon (UK)</item>
+        <item>ounce/cubic inch [oz/in^3]</item>
+        <item>ounce/cubic foot [oz/ft^3]</item>
+        <item>ounce/gallon (US)</item>
+        <item>ounce/gallon (UK)</item>
+        <item>grain/gallon (US)</item>
+        <item>grain/gallon (UK)</item>
+        <item>grain/cubic foot [gr/ft^3]</item>
+        <item>ton (short)/cubic yard</item>
+        <item>ton (long)/cubic yard</item>
+        <item>slug/cubic foot [slug/ft^3]</item>
+        <item>psi/1000 feet</item>
+        <item>Earth\'s density (mean)</item>
+    </string-array>
+
+    <!--Specific Volume Spinner Values-->
+    <string-array name="specific_volume_array">
+        <item>cubic meter/kilogram</item>
+        <item>cubic centimeter/gram</item>
+        <item>liter/kilogram [L/kg]</item>
+        <item>liter/gram [L/g]</item>
+        <item>cubic foot/kilogram [ft^3/kg]</item>
+        <item>cubic foot/pound [ft^3/lb]</item>
+        <item>gallon (US)/pound</item>
+        <item>gallon (UK)/pound</item>
+    </string-array>
+
+    <!--Moment of Inertia Spinner Values-->
+    <string-array name="moment_of_inertia_array">
+        <item>kilogram square meter</item>
+        <item>kilogram square centimeter</item>
+        <item>kilogram square millimeter</item>
+        <item>gram square centimeter</item>
+        <item>gram square millimeter</item>
+        <item>kilogram-force meter square second</item>
+        <item>kilogram-force centimeter square second</item>
+        <item>ounce square inch [oz*in^2]</item>
+        <item>ounce-force inch sq. second</item>
+        <item>pound square foot [lb*ft^2]</item>
+        <item>pound-force foot sq. second</item>
+        <item>pound square inch [lb*in^2]</item>
+        <item>pound-force inch sq. second</item>
+        <item>slug square foot [slug*ft^2]</item>
+    </string-array>
+
+    <!--Moment of Force Spinner Values-->
+    <string-array name="moment_of_force_array">
+        <item>newton meter [N*m]</item>
+        <item>kilonewton meter [kN*m]</item>
+        <item>millinewton meter [mN*m]</item>
+        <item>micronewton meter [μN*m]</item>
+        <item>ton-force (short) meter</item>
+        <item>ton-force (long) meter</item>
+        <item>ton-force (metric) meter</item>
+        <item>kilogram-force meter [kgf*m]</item>
+        <item>gram-force centimeter</item>
+        <item>pound-force foot [lbf*ft]</item>
+        <item>poundal foot [pdl*ft]</item>
+        <item>poundal inch [pdl*in]</item>
+    </string-array>
+
+    <!--Torque of Force Spinner Values-->
+    <string-array name="torque_array">
+        <item>newton meter [N*m]</item>
+        <item>newton centimeter [N*cm]</item>
+        <item>newton millimeter [N*mm]</item>
+        <item>kilonewton meter [kN*m]</item>
+        <item>dyne meter [dyn*m]</item>
+        <item>dyne centimeter [dyn*cm]</item>
+        <item>dyne millimeter [dyn*mm]</item>
+        <item>kilogram-force meter</item>
+        <item>kilogram-force centimeter</item>
+        <item>kilogram-force millimeter</item>
+        <item>gram-force meter [gf*m]</item>
+        <item>gram-force centimeter</item>
+        <item>gram-force millimeter</item>
+        <item>ounce-force foot [ozf*ft]</item>
+        <item>ounce-force inch [ozf*in]</item>
+        <item>pound-force foot [lbf*ft]</item>
+        <item>pound-force inch [lbf*in]</item>
     </string-array>
 
     <string name="title_activity_settings">Settings</string>
